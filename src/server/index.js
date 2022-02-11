@@ -17,10 +17,11 @@ app.use(express.urlencoded({ extended: true }));
 
 
 
+const userRouter = require('./routers/user');
+app.use('/user', userRouter);
 
-
-
-
+const movieRouter = require('./routers/movie');
+app.use('/movie', movieRouter);
 
 
 
@@ -32,7 +33,7 @@ app.get('*', (req, res) => {
 });
 
 // Start our API server
-const port = process.env.PORT || 4000;
+const port = process.env.API_PORT || 4000;
 app.listen(port, () => {
     console.log(`\n Server is running on http://localhost:${port}\n`);
 });
